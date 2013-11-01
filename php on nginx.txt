@@ -1,0 +1,40 @@
+https://www.digitalocean.com/community/articles/how-to-install-lemp-nginx-mysql-php-stack-on-arch-linux
+
+pacman -S mariadb
+pacman -S php-fpm
+pacman -S nginx
+pacman -S vim
+
+vim /etc/nginx/nginx.conf
+
+changed:
+server{
+	listen 8080;
+	...
+	...
+      }
+
+to:
+server{
+	listen 8089;
+	...
+	...
+      }
+
+
+changed the block that deals with php applications to
+location ~ \.php$ {
+      fastcgi_pass   unix:/var/run/php-fpm/php-fpm.sock;
+      fastcgi_index  index.php;
+      root   /srv/http;
+      include        fastcgi.conf;
+ }
+
+
+SETTING UP PHP INFO PAGE:
+vim /srv/http/info.php
+
+<?php
+phpinfo();
+?>
+
