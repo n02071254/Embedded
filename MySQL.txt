@@ -1,0 +1,49 @@
+mysql -p -u root
+//log in
+
+mysql> CREATE DATABASE PHPsampleDB;
+//create a sample database
+
+mysql> USE PHPsampleDB;
+
+mysql> CREATE TABLE customer (name VARCHAR(30), email VARCHAR(30),
+    -> account VARCHAR(20));
+
+mysql> INSERT INTO customer VALUES ('Gregory House', 'greg@nospam.com', '12345678');
+mysql> INSERT INTO customer VALUES ('Robert Chase', 'greg@nospam.net', '87654321');
+mysql> INSERT INTO customer VALUES ('Lisa Cuddy', 'greg@nospam.net', '24688642');
+//inserts data into the table
+
+mysql> SELECT * FROM customer;
+//displays the table
++---------------+-----------------+----------+
+| name          | email           | account  |
++---------------+-----------------+----------+
+| Gregory House | greg@nospam.com | 12345678 |
+| Robert Chase  | greg@nospam.net | 87654321 |
+| Lisa Cuddy    | greg@nospam.net | 24688642 |
++---------------+-----------------+----------+
+
+
+
+<?php
+
+        $dbhandle = mysql_connect('localhost', /root', 'root');
+
+        if ($dbhandle)
+        {
+                echo "Connected to MySQL Database<br>";
+                mysql_close($dbhandle);
+
+        } else {
+                 echo "Unable to connect to MySQL Database<br>";
+        }
+
+
+?>
+//connects to mysql server and echos that you have connected then closes the connection
+
+
+
+
+
